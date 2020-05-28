@@ -1,0 +1,26 @@
+@import "~bootstrap/scss/bootstrap";
+@import "scss/variables";
+
+body, html{
+  margin:0;
+  padding:0;
+}
+
+html {
+  width: 100%;
+  background-color: $black ;
+  background-image: linear-gradient(147deg, $black  0%, #000000 74%);
+  background-repeat: no-repeat;
+}
+body {
+  width: 100%;
+  background-color: $black ;
+  background-image: linear-gradient(147deg, $black  0%, $black 74%);
+  background-repeat: no-repeat;
+}
+footer {
+  width: 100%;
+  background-color: $black ;
+  background-image: linear-gradient(147deg, $black  0%, $black 74%);
+  background-repeat: no-repeat;
+}

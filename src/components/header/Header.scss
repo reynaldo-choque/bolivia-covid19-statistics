@@ -1,0 +1,69 @@
+$ns: "header";
+
+.#{$ns} {
+  color: #ffffff;
+  width: 98%;
+  margin: 5px auto;
+
+  &__custom-card {
+    margin: 5px;
+    height: 10rem;
+    text-align: center;
+
+    .card-header {
+      font-size: 1.5rem;
+      padding: 1px;
+      margin: 0 2rem;
+      border-bottom: 4px #ffffff solid;
+    }
+
+    .card-body {
+      .card-title {
+        font-size: 4rem;
+      }
+    }
+
+    &--recovered {
+      background-color: #378b29;
+      background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
+    }
+
+    &--confirmed {
+      background-color: #7fcec5;
+      background-image: linear-gradient(315deg, #7fcec5 0%, #14557b 74%);
+    }
+
+    &--death {
+      background-color: #000000;
+      background-image: linear-gradient(315deg, #000000 0%, #b82e1f 74%);
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .#{$ns} {
+    &__custom-card {
+      .card-header {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .#{$ns} {
+    &__custom-card {
+      height: 5rem;
+
+      .card-body {
+        padding: 0;
+        margin: 0;
+
+        .card-title {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}

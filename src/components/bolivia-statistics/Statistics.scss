@@ -1,0 +1,7 @@
+$statistics: "statistics";
+
+.#{$statistics} {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
