@@ -47,6 +47,12 @@ $ns: "header";
         margin: 0;
         font-size: 1.2rem;
       }
+
+      .card-body {
+        .card-title {
+          font-size: 3rem;
+        }
+      }
     }
   }
 }

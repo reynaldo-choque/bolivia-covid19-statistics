@@ -16,7 +16,7 @@ const db = admin.firestore();
 
 
 app.get("/home", (request, response) => {
-   response.send("hello firebase from here");
+   response.send("hello firebase from here 2");
 });
 
 app.get("/getDepartments", (request, response) => {
@@ -39,6 +39,29 @@ app.get("/getDepartments", (request, response) => {
           }
        }
    )();
+});
+
+app.get("/getHistorical", (request, response) => {
+    (
+        async () => {
+            try {
+                const collection = await db.collection("historical").get();
+                let historical = [];
+
+                collection.forEach( historic => {
+                    historical.push({
+                        id: historic.id,
+                        data: historic.data()
+                    });
+                });
+
+                return response.status(200).json(historical);
+            } catch (e) {
+                console.log("eror", e);
+                return res.status(500).send(e);
+            }
+        }
+    )();
 });
 
 exports.app = functions.https.onRequest(app);

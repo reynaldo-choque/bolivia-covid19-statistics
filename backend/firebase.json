@@ -12,6 +12,9 @@
     }, {
       "source": "/getDepartments",
       "function": "app"
+    }, {
+      "source": "/getHistorical",
+      "function": "app"
     }],
     "ignore": [
       "firebase.json",

@@ -1,0 +1,19 @@
+$ns: "bolivia-charts";
+
+.#{$ns} {
+  flex: 1;
+
+  &__bar {
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+
+    .recharts-tooltip-wrapper {
+      color: #0048BA;
+    }
+
+    .recharts-cartesian-axis {
+      font-weight: 300;
+    }
+  }
+}

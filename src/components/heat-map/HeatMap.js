@@ -36,24 +36,36 @@ class HeatMap extends React.Component {
                         scale: Math.round(2.5 * window.innerWidth)
                     }}
                 >
+                    <defs>
+                        <linearGradient id="mapTooltip" x1="0" y1="0" x2="100%" y2="0">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="100%" stop-color="#fec84e"/>
+                        </linearGradient>
+                    </defs>
                     <Geographies geography={boliviaMapGeo}>
                         {({geographies}) =>
                             geographies
                                 .filter(d => d.properties.country === "Bolivia")
                                 .map(geo => {
+                                    let fillColor = "rgb(255, 180, 0)";
+                                    if(this.props.departments.length > 0) {
+                                        const depInfo = this.props.departments.find(dep => dep.data.name === geo.properties.name);
+                                        const percentage = Math.ceil(100 * depInfo.data.confirmed / this.props.total[0].total);
+                                        fillColor = `rgb(255, ${180 - percentage}, 0)`;
+                                    }
                                     return (
                                         <Geography
                                             key={uuidv4()}
                                             geography={geo}
-                                            stroke="#909090"
-                                            fill={"rgb(205,133,63)"}
+                                            stroke="#ffffff"
+                                            fill={fillColor}
                                             style={{
                                                 hover: {
-                                                    fill: "#ffefcc",
+                                                    fill: "url(#mapTooltip)",
                                                     outline: "none"
                                                 },
                                                 pressed: {
-                                                    fill: "#ffefcc",
+                                                    fill: "url(#mapTooltip)",
                                                     outline: "none"
                                                 }
                                             }}

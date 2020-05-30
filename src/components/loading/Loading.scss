@@ -1,0 +1,59 @@
+$ns: "loading-page";
+
+@mixin animation-mixin($name, $axis, $start, $end, $color-var) {
+  @keyframes #{$name} {
+    0% {
+      transform: unquote("#{$axis}(#{$start})");
+      background-color: transparent;
+    }
+
+    20% {
+      background-color: transparent;
+      transform: unquote("#{$axis}(#{$end})");
+      -moz-transform: unquote("#{$axis}(#{$end})");
+      -o-transform: unquote("#{$axis}(#{$end})");
+      -ms-transform: unquote("#{$axis}(#{$end})");
+      -webkit-transform: unquote("#{$axis}(#{$end})");
+    }
+
+    50% {background-color: $color-var;}
+
+    51%, 100% {
+      background-color: transparent;
+      transform: unquote("#{$axis}(#{$start})");
+      -moz-transform: unquote("#{$axis}(#{$start})");
+      -o-transform: unquote("#{$axis}(#{$start})");
+      -ms-transform: unquote("#{$axis}(#{$end})");
+      -webkit-transform: unquote("#{$axis}(#{$start})");
+    }
+  }
+}
+
+@include animation-mixin(animate, translateY, 0px, -20px, transparent);
+
+.#{$ns} {
+  color: #ffffff;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  &__wavy {
+    position: relative;
+    display: inline-block;
+    -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+    animation: animate 2s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+
+    span {
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      animation: animate 2s ease-in-out infinite;
+      animation-delay: calc(0.1s * var(--i));
+    }
+  }
+}
+
+
