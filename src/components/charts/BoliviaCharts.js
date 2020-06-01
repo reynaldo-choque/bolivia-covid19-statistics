@@ -1,11 +1,10 @@
 import * as React from "react";
-import "./BoliviaCharts.scss";
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-    ComposedChart, Area, Bar
+    ComposedChart, Bar
 } from 'recharts';
-
 import risk from 'images/risk-bolivia.png';
+import "./BoliviaCharts.scss";
 
 const ns = "bolivia-charts";
 
@@ -124,6 +123,7 @@ const BoliviaChart = (props) => {
             >
                 <img
                     src={risk}
+                    alt={"Índice de riesgo por municipios."}
                 />
                 <h5>Índice de riesgo por municipios</h5>
             </div>

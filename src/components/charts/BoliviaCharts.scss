@@ -1,15 +1,16 @@
+@import "scss/variables";
 $ns: "bolivia-charts";
 
 .#{$ns} {
   flex: 1;
 
   &__bar {
-    color: white;
+    color: $white;
     font-weight: bold;
     margin-right: 10px;
 
     .recharts-tooltip-wrapper {
-      color: #0048BA;
+      color: $blue;
     }
 
     .recharts-cartesian-axis {
@@ -18,7 +19,7 @@ $ns: "bolivia-charts";
   }
 
   &__historical {
-    color: white;
+    color: $white;
 
     .recharts-legend-wrapper {
       font-weight: bold;
@@ -34,7 +35,7 @@ $ns: "bolivia-charts";
     }
 
     h5 {
-      color: #ffffff;
+      color: $white;
       text-align: center;
     }
   }

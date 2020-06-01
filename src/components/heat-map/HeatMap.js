@@ -19,10 +19,6 @@ class HeatMap extends React.Component {
         fillColor: null
     };
 
-    constructor() {
-        super();
-    }
-
     getWidth = () => {
         let width = window.innerWidth;
         if (width > 575) {
@@ -44,21 +40,21 @@ class HeatMap extends React.Component {
     }
 
     getXRotation = () => {
-        let xRotate = 63;
+        let xRotate = 62;
         if (window.innerWidth > 575) {
-            xRotate = xRotate;
-        } else {
             xRotate = xRotate + 1;
+        } else {
+            xRotate = xRotate + 2;
         }
         return xRotate;
     }
 
     getYRotation = () => {
-        let yRotate = 18;
+        let yRotate = 17;
         if (window.innerWidth > 575) {
-            yRotate = yRotate;
+            yRotate = yRotate + 1;
         } else {
-            yRotate = yRotate - 1;
+            yRotate = yRotate - 2;
         }
         return yRotate;
     }

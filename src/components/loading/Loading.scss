@@ -1,3 +1,5 @@
+@import "scss/variables";
+
 $ns: "loading-page";
 
 @mixin animation-mixin($name, $axis, $start, $end, $color-var) {
@@ -16,7 +18,9 @@ $ns: "loading-page";
       -webkit-transform: unquote("#{$axis}(#{$end})");
     }
 
-    50% {background-color: $color-var;}
+    50% {
+      background-color: $color-var;
+    }
 
     51%, 100% {
       background-color: transparent;
@@ -32,7 +36,7 @@ $ns: "loading-page";
 @include animation-mixin(animate, translateY, 0px, -20px, transparent);
 
 .#{$ns} {
-  color: #ffffff;
+  color: $white;
   font-size: 4rem;
   display: flex;
   justify-content: center;
@@ -42,7 +46,7 @@ $ns: "loading-page";
   &__wavy {
     position: relative;
     display: inline-block;
-    -webkit-box-reflect: below -12px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+    -webkit-box-reflect: below -12px linear-gradient($transparent, rgba(0, 0, 0, 0.2));
     animation: animate 2s ease-in-out infinite;
     animation-delay: calc(0.1s * var(--i));
 
@@ -57,3 +61,8 @@ $ns: "loading-page";
 }
 
 
+@media (max-width: 575px) {
+  .#{$ns} {
+    font-size: 2rem;
+  }
+}

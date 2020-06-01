@@ -1,7 +1,8 @@
+@import "scss/variables";
 $ns: "header";
 
 .#{$ns} {
-  color: #ffffff;
+  color: $white;
   width: 98%;
   margin: 5px auto;
 
@@ -14,7 +15,7 @@ $ns: "header";
       font-size: 1.5rem;
       padding: 1px;
       margin: 0 2rem;
-      border-bottom: 4px #ffffff solid;
+      border-bottom: 4px $white solid;
     }
 
     .card-body {
@@ -24,18 +25,18 @@ $ns: "header";
     }
 
     &--recovered {
-      background-color: #378b29;
-      background-image: linear-gradient(315deg, #378b29 0%, #74d680 74%);
+      background-color: $recovered-gradient-first;
+      background-image: linear-gradient(315deg, $recovered-gradient-first 0%, $recovered-gradient-second 74%);
     }
 
     &--confirmed {
       background-color: #7fcec5;
-      background-image: linear-gradient(315deg, #7fcec5 0%, #14557b 74%);
+      background-image: linear-gradient(315deg, $confirmed-gradient-first 0%, $confirmed-gradient-second 74%);
     }
 
     &--death {
-      background-color: #000000;
-      background-image: linear-gradient(315deg, #000000 0%, #b82e1f 74%);
+      background-color: $death-gradient-first;
+      background-image: linear-gradient(315deg, $death-gradient-first 0%, $death-gradient-second 74%);
     }
   }
 }
@@ -59,7 +60,7 @@ $ns: "header";
 
 @media (max-width: 575px) {
   .#{$ns} {
-    margin: 0;
+    margin: 0 auto;
 
     &__custom-card {
       height: 5rem;

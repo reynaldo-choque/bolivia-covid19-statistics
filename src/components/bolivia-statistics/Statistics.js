@@ -11,10 +11,6 @@ class Statistics extends React.Component {
         tooltipContent: ""
     };
 
-    constructor(props) {
-        super(props);
-    }
-
     editTooltip = (department) => {
 
         if (this.props.departments.length > 0) {

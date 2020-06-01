@@ -1,4 +1,16 @@
-$primary-color-background: #282c34;
-$font-color-default: #fff;
 $black: #000000;
-$greenStrong: #002700;
+$white: #ffffff;
+$blue: #0048BA;
+$strong-green: #282c34;
+$transparent: transparent;
+
+$primary-color-background: $strong-green;
+$font-color-default: $white;
+
+
+$recovered-gradient-first: #378b29;
+$recovered-gradient-second: #74d680;
+$confirmed-gradient-first: #7fcec5;
+$confirmed-gradient-second: #14557b;
+$death-gradient-first: $black;
+$death-gradient-second: #b82e1f;
