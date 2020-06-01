@@ -59,8 +59,11 @@ $ns: "header";
 
 @media (max-width: 575px) {
   .#{$ns} {
+    margin: 0;
+
     &__custom-card {
       height: 5rem;
+      margin: 5px;
 
       .card-body {
         padding: 0;

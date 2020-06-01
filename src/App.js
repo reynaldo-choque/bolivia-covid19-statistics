@@ -5,7 +5,7 @@ import Header from "components/header/Header";
 import Loading from "components/loading/Loading";
 
 import './App.scss';
-
+const MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 class App extends React.Component {
 
     constructor(props) {
@@ -38,23 +38,24 @@ class App extends React.Component {
     }
 
     formatHistoricalData = (historical) => {
-
-        var historicalData = [];
-
-        historical.forEach( his => {
-            var date = new Date(null);
+        let historicalData = [];
+        historical.forEach(his => {
+            let date = new Date(null);  //get first UNIX time
             date.setSeconds(date.getSeconds() + his.data.date._seconds);
             his.data.date = date;
             historicalData.push(his.data);
-            //console.log("it", his);
         });
-        historicalData.sort( (x, y) => x.date > y.date ? 1:-1 );
-        debugger;
-        //xxx.setSeconds(xxx.getSeconds() + historical[0].data.date._seconds)
+        historicalData.sort((x, y) => x.date > y.date ? 1 : -1);
+        historicalData.forEach(his => {
+            const month = his.date.getMonth();
+            const day = his.date.getDate().toString().padStart(2, "0");
+            his.date = `${day}-${MONTHS[month]}`;
+            his.actives = his.confirmed - his.recovered - his.deaths;
+        });
+        return historicalData;
     }
 
     componentDidMount() {
-
         let one = 'https://us-central1-bolivia-covid19-data.cloudfunctions.net/app/getDepartments';
         let two = 'https://us-central1-bolivia-covid19-data.cloudfunctions.net/app/getHistorical';
         const requestOne = axios.get(one);
@@ -67,10 +68,9 @@ class App extends React.Component {
             const historical = responses[1].data;
             this.setState({
                 departments: departments || [],
-                historical: historical,
+                historical: this.formatHistoricalData(historical),
                 consolidated: this.getTotal(departments || [])
             });
-            this.formatHistoricalData(historical);
         })).catch(errors => {
             console.error(errors);
         })
@@ -83,6 +83,7 @@ class App extends React.Component {
                     <Header total={this.state.consolidated}/>
                     <Statistics
                         departments={this.state.departments}
+                        historical={this.state.historical}
                         total={this.state.consolidated}
                     />
                 </div>

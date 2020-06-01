@@ -23,17 +23,57 @@ class HeatMap extends React.Component {
         super();
     }
 
+    getWidth = () => {
+        let width = window.innerWidth;
+        if (width > 575) {
+            width = width * 75 / 100;
+        } else {
+            width = width * 90 / 100;
+        }
+        return width;
+    }
+
+    getScale = () => {
+        let scale = window.innerWidth;
+        if (scale > 575) {
+            scale = 2.5 * scale;
+        } else {
+            scale = 3.5 * scale;
+        }
+        return Math.round(scale);
+    }
+
+    getXRotation = () => {
+        let xRotate = 63;
+        if (window.innerWidth > 575) {
+            xRotate = xRotate;
+        } else {
+            xRotate = xRotate + 1;
+        }
+        return xRotate;
+    }
+
+    getYRotation = () => {
+        let yRotate = 18;
+        if (window.innerWidth > 575) {
+            yRotate = yRotate;
+        } else {
+            yRotate = yRotate - 1;
+        }
+        return yRotate;
+    }
+
     render() {
         return (
             <div className={`${ns}`}>
                 <ComposableMap
                     data-tip={this.props.dataTip}
-                    width={window.innerWidth * 75 / 100}
-                    height={window.innerWidth * 75 / 100}
+                    width={this.getWidth()}
+                    height={this.getWidth()}
                     projection="geoAzimuthalEqualArea"
                     projectionConfig={{
-                        rotate: [this.state.rotate_X, this.state.rotate_Y, 0],
-                        scale: Math.round(2.5 * window.innerWidth)
+                        rotate: [this.getXRotation(), this.getYRotation(), 0],
+                        scale: this.getScale()
                     }}
                 >
                     <defs>
@@ -48,7 +88,7 @@ class HeatMap extends React.Component {
                                 .filter(d => d.properties.country === "Bolivia")
                                 .map(geo => {
                                     let fillColor = "rgb(255, 180, 0)";
-                                    if(this.props.departments.length > 0) {
+                                    if (this.props.departments.length > 0) {
                                         const depInfo = this.props.departments.find(dep => dep.data.name === geo.properties.name);
                                         const percentage = Math.ceil(100 * depInfo.data.confirmed / this.props.total[0].total);
                                         fillColor = `rgb(255, ${180 - percentage}, 0)`;

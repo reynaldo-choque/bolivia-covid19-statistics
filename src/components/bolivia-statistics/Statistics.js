@@ -55,7 +55,8 @@ class Statistics extends React.Component {
                 </React.Fragment>
                 <BoliviaChart
                     total={this.props.total || []}
-                    departments={ this.props.departments.map(dep => dep.data) || []}
+                    departments={this.props.departments.map(dep => dep.data) || []}
+                    historical={this.props.historical}
                 />
             </div>
         );

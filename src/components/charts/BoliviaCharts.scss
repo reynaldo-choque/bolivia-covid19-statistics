@@ -16,4 +16,36 @@ $ns: "bolivia-charts";
       font-weight: 300;
     }
   }
+
+  &__historical {
+    color: white;
+
+    .recharts-legend-wrapper {
+      font-weight: bold;
+    }
+  }
+
+  &__mapa-riesgo {
+    margin-top: 15px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    h5 {
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .#{$ns} {
+    display: block;
+
+    &__bar {
+      display: block;
+    }
+  }
 }

@@ -3,3 +3,9 @@ $ns: "heat-map";
 .#{$ns} {
   flex: 2;
 }
+
+@media (max-width: 575px) {
+  .#{$ns} {
+    display: block;
+  }
+}
