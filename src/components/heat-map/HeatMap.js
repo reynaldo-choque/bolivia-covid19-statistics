@@ -50,9 +50,9 @@ class HeatMap extends React.Component {
     }
 
     getYRotation = () => {
-        let yRotate = 17;
+        let yRotate = 19;
         if (window.innerWidth > 575) {
-            yRotate = yRotate + 1;
+            yRotate = yRotate - 1;
         } else {
             yRotate = yRotate - 2;
         }
@@ -115,6 +115,18 @@ class HeatMap extends React.Component {
                                 })
                         }
                     </Geographies>
+                    {this.props.locations.map(({data: {coordinates}}) => {
+                        return (
+                            <Marker key={uuidv4()} coordinates={coordinates}>
+                                <circle r={6}
+                                        fill="#ff0000"
+                                        stroke="#cc0000"
+                                        strokeWidth={5}
+                                        opacity={0.6}
+                                />
+                            </Marker>
+                        );
+                    })}
                 </ComposableMap>
             </div>
         );

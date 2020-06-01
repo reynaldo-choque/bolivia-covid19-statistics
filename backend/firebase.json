@@ -15,6 +15,9 @@
     }, {
       "source": "/getHistorical",
       "function": "app"
+    }, {
+      "source": "/getLocations",
+      "function": "app"
     }],
     "ignore": [
       "firebase.json",

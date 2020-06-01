@@ -64,4 +64,27 @@ app.get("/getHistorical", (request, response) => {
     )();
 });
 
+app.get("/getLocations", (request, response) => {
+    (
+        async () => {
+            try {
+                const collection = await db.collection("locations").get();
+                let locations = [];
+
+                collection.forEach( location => {
+                    locations.push({
+                        id: location.id,
+                        data: location.data()
+                    });
+                });
+
+                return response.status(200).json(locations);
+            } catch (e) {
+                console.log("eror", e);
+                return res.status(500).send(e);
+            }
+        }
+    )();
+});
+
 exports.app = functions.https.onRequest(app);

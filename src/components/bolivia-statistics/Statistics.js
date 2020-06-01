@@ -46,6 +46,7 @@ class Statistics extends React.Component {
                         dataTipFn={this.editTooltip}
                         total={this.props.total || []}
                         departments={this.props.departments || []}
+                        locations={this.props.locations}
                     />
                     <ReactTooltip html={true} style={{padding: "0"}}/>
                 </React.Fragment>

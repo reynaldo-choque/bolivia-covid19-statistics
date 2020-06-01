@@ -5,7 +5,9 @@ import Header from "components/header/Header";
 import Loading from "components/loading/Loading";
 
 import './App.scss';
+
 const MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
 class App extends React.Component {
 
     constructor(props) {
@@ -13,6 +15,7 @@ class App extends React.Component {
         this.state = {
             departments: [],
             historical: [],
+            locations: [],
             consolidated: []
         };
     }
@@ -58,18 +61,25 @@ class App extends React.Component {
     componentDidMount() {
         let one = 'https://us-central1-bolivia-covid19-data.cloudfunctions.net/app/getDepartments';
         let two = 'https://us-central1-bolivia-covid19-data.cloudfunctions.net/app/getHistorical';
+        let three = 'https://us-central1-bolivia-covid19-data.cloudfunctions.net/app/getLocations';
         const requestOne = axios.get(one);
         const requestTwo = axios.get(two);
-        axios.all([
-            requestOne,
-            requestTwo]
+        const requestThree = axios.get(three);
+        axios.all(
+            [
+                requestOne,
+                requestTwo,
+                requestThree
+            ]
         ).then(axios.spread((...responses) => {
             const departments = responses[0].data;
             const historical = responses[1].data;
+            const locations = responses[2].data || [];
             this.setState({
                 departments: departments || [],
                 historical: this.formatHistoricalData(historical),
-                consolidated: this.getTotal(departments || [])
+                consolidated: this.getTotal(departments || []),
+                locations: locations
             });
         })).catch(errors => {
             console.error(errors);
@@ -84,6 +94,7 @@ class App extends React.Component {
                     <Statistics
                         departments={this.state.departments}
                         historical={this.state.historical}
+                        locations={this.state.locations}
                         total={this.state.consolidated}
                     />
                 </div>
