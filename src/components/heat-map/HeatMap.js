@@ -121,7 +121,7 @@ class HeatMap extends React.Component {
                                 <circle r={6}
                                         fill="#ff0000"
                                         stroke="#cc0000"
-                                        strokeWidth={5}
+                                        strokeWidth={Math.max(5, Math.floor(window.innerWidth / 100))}
                                         opacity={0.6}
                                 />
                             </Marker>
