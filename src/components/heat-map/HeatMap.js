@@ -122,8 +122,30 @@ class HeatMap extends React.Component {
                                         fill="#ff0000"
                                         stroke="#cc0000"
                                         strokeWidth={Math.max(5, Math.floor(window.innerWidth / 100))}
-                                        opacity={0.6}
+                                        opacity={0.5}
                                 />
+                            </Marker>
+                        );
+                    })}
+
+                    {this.props.locations.map(({data: {municipality}, data: {coordinates}}) => {
+                        return (
+                            <Marker key={uuidv4()} coordinates={coordinates}>
+                                {Math.round(Math.random() * 100) % 23 === 0 &&
+                                <text
+                                    textAnchor="middle"
+                                    y={-15}
+                                    style={{
+                                        fontFamily: "system-ui",
+                                        fill: "#FFFFFF",
+                                        fontSize: "1rem",
+                                        fontWeight: "bold",
+                                        textTransform: "uppercase"
+                                    }}
+                                >
+                                    {municipality}
+                                </text>
+                                }
                             </Marker>
                         );
                     })}
