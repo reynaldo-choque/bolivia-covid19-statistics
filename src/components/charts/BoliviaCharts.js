@@ -116,18 +116,6 @@ const BoliviaChart = (props) => {
                 />
             </LineChart>
 
-            <div
-                className={`${ns}__mapa-riesgo`}
-                width={getCurrentWidthRender()}
-                heigth={400}
-            >
-                <img
-                    src={risk}
-                    alt={"Índice de riesgo por municipios."}
-                />
-                <h5>Índice de riesgo por municipios</h5>
-            </div>
-
         </div>
     );
 };

@@ -131,7 +131,7 @@ class HeatMap extends React.Component {
                     {this.props.locations.map(({data: {municipality}, data: {coordinates}}) => {
                         return (
                             <Marker key={uuidv4()} coordinates={coordinates}>
-                                {Math.round(Math.random() * 100) % 23 === 0 &&
+                                {Math.round(Math.random() * 100) % 7 === 0 &&
                                 <text
                                     textAnchor="middle"
                                     y={-15}

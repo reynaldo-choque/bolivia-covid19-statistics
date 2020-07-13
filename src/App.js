@@ -5,6 +5,7 @@ import Header from "components/header/Header";
 import Loading from "components/loading/Loading";
 
 import './App.scss';
+import ReactTooltip from "react-tooltip";
 
 const MONTHS = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
@@ -89,15 +90,19 @@ class App extends React.Component {
     render() {
         if (this.state.departments.length > 0) {
             return (
-                <div className="App">
-                    <Header total={this.state.consolidated}/>
-                    <Statistics
-                        departments={this.state.departments}
-                        historical={this.state.historical}
-                        locations={this.state.locations}
-                        total={this.state.consolidated}
-                    />
-                </div>
+                <React.Fragment>
+                    <div className={"rain"}></div>
+                    <audio src={"https://firebasestorage.googleapis.com/v0/b/bolivia-covid19-data.appspot.com/o/SadBrothers.webm?alt=media&token=c5126b1a-f7cd-4e30-995a-510aabd589a3"} autoPlay={true} loop={true} />
+                    <div className="App">
+                        <Header total={this.state.consolidated}/>
+                        <Statistics
+                            departments={this.state.departments}
+                            historical={this.state.historical}
+                            locations={this.state.locations}
+                            total={this.state.consolidated}
+                        />
+                    </div>
+                </React.Fragment>
             );
         } else {
             return (<Loading/>);
